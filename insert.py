@@ -11,9 +11,9 @@ warnings.simplefilter("ignore")
 ############################################
 
 connection = sql.connect(
-    dbname="nome-do-banco",
+    dbname="trabalho-banco",
     user="postgres",
-    password="senha",
+    password="010801",
     host="localhost",
     port="5432"
 )
@@ -22,14 +22,14 @@ connection = sql.connect(
 #LER PLANILHA EXCEL E INSERIR DADOS NO BANCO
 ############################################
 
-planilha = pd.read_excel("arquivo.xlsx")
+planilha = pd.read_excel("empresa1.xlsx")
 
-for i, DADOS in enumerate(planilha['coluna']):
-    dados1 = planilha.loc[i, "coluna1"]
-    dados2 = planilha.loc[i, "coluna2"]
-    dados3 = planilha.loc[i, "coluna3"]
+for i, DADOS in enumerate(planilha['id']):
+    dados1 = planilha.loc[i, "id"]
+    dados2 = planilha.loc[i, "nome"]
+    dados3 = planilha.loc[i, "cnpj"]
 
-    dados = "INSERT INTO ClienteEmpresa VALUES ('"+str(dados1)+"', '"+str(dados2)+"', '"+str(dados3)+"');"
+    dados = "INSERT INTO clienteempresa VALUES ('"+str(dados1)+"', '"+str(dados2)+"', '"+str(dados3)+"');"
 
     try:
         mycursor = connection.cursor()
